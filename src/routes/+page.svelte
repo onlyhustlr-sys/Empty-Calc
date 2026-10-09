@@ -2,22 +2,20 @@
 <script>
 
 let em = $state("")
-
-const op = (e)=>{
-    let v1=[""]
-    for (let index = 0; index < em.length; index++) {
-        v1+=em[index];
-        
-    }
-    em=""
-    em.pushback(em)
-}
+  
 const cf=(e)=>{
-    let val = e.target.textContent
-   em+=val
-   
+    let val = e.target.textContent;
+  if (val=="X") {
+    val="*"
+  }
+  if (val=="=") {
+    em=eval(em)
+  }
+  else{
+    em+=val
+  }
 }
-</script>
+    </script>
 
 <div>
 <h1 class="ch">My Funny Calculator</h1>
@@ -41,10 +39,10 @@ const cf=(e)=>{
 
 <button class="bt" onclick={cf}>0</button>
 
-<button class="bt" onclick={op}>+</button>
+<button class="bt" onclick={cf}>+</button>
 <button class="bt" onclick={cf}>-</button>
 <button class="bt" onclick={cf}>/</button>
-<button class="bt" onclick={cf}>x</button>
+<button class="bt" onclick={cf}>X</button>
 <button class="bt" onclick={cf}>=</button>
 </div>
 </div>
@@ -60,6 +58,7 @@ const cf=(e)=>{
     min-width: 78vw;
     min-height: 10vh;
     margin: 5%;
+  text-align: center;
     background-color: aqua;
     border-radius:2vw;
 }
